@@ -17,3 +17,11 @@ def cats(id):
 		'cat.html',cat=cat)
 if __name__ == '__main__':
    app.run(debug = True)
+@app.route('/create_cat')
+def create_page():
+	if request.method == 'GET':
+		return render_template('create_cat.html')
+	else:
+		name=request.form['name']
+		cats=get_all_cats()
+		return reder_template('home.html',cats=cats)
